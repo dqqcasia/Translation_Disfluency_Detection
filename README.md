@@ -1,3 +1,3 @@
 # Translation_Disfluency_Detection
 
-Codes and data will be released soon. Please contact me if you have any questions.
+We released 3,000 samples of the annotated spoken sentences and our annotation rules. Codes will be be pushed this month.
