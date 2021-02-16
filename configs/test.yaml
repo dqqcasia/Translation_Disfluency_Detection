@@ -1,0 +1,64 @@
+---
+model: 'Transformer'
+src_vocab: 'vocab.pad.flu'
+dst_vocab: 'vocab.pad.flu'
+lbl_vocab: 'vocab.label'
+src_vocab_size: 3000
+dst_vocab_size: 3000
+lbl_vocab_size: 3
+hidden_units: 512
+scale_embedding: True
+tie_embedding_and_softmax: False
+attention_dropout_rate: 0.0
+residual_dropout_rate: 0.1
+ff_activation: 'glu'
+num_blocks: 6
+num_heads: 8
+model_dir: 'models_test'
+share_embeddings: True
+label_loss_ratio: 0.2
+del_penalty_coef: 1.5
+with_word_emb: True
+train:
+    num_gpus: 2
+    src_path: 'train.dis'
+    dst_path: 'train.pad.flu'
+    label_path: 'train.label'
+    src_segment_path: 'train.dis.word.input'
+    tokens_per_batch: 7000
+    max_length: 125
+    num_epochs: 50
+    num_steps: 200000
+    logdir: 'Models_Ch'
+    save_freq: 100
+    show_freq: 1
+    summary_freq: 100
+    grads_clip: 0
+    optimizer: 'adam_decay'
+    learning_rate: 1
+    warmup_steps: 4000
+    label_smoothing: 0.1
+    toleration: 100
+    eval_on_dev: True
+dev:
+    batch_size: 128
+    src_path: 'dev.dis'
+    ref_path: 'dev.pad.flu'
+    label_path: 'dev.label'
+    output_path: 'dev_infer'
+    output_label_path: 'dev_infer_label'
+
+test:
+    batch_size: 128
+    max_target_length: 200
+    lp_alpha: 0.6
+    beam_size: 1
+    num_gpus: 2
+
+
+    set1:
+        src_path: 'test.dis'
+        ref_path: 'test.pad.flu'
+        label_path: 'test.label'
+        output_path: 'test_infer'
+        output_label_path: 'test_infer_label'
