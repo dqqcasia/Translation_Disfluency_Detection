@@ -7,7 +7,7 @@ This is a tool for disfluency detection in the pipeline speech translation syste
 
 ## Requirements
 * python==3.x 
-* all packages in requirements is requested.
+* all packages in requirements are requested.
 ```
 pip install -r requirements.txt
 ```
